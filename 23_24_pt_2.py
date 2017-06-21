@@ -23,11 +23,13 @@ fig, ax = plt.subplots(1, 1)
 _ = ax.set_xlabel('IPTG concentration (mM)')
 _ = ax.set_ylabel('Intensity')
 _ = ax.set_xscale('log')
+# _ = ax.set_yscale('log')
 
 
 #plot
-_ = ax.plot(iptg, gfp, marker='.', linestyle='none')
 _ = ax.errorbar(iptg, gfp, yerr=sem, linestyle='none', marker='.',
                 markersize=10)
+
+
 
 plt.show()
