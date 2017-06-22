@@ -18,6 +18,9 @@ wt_lac_conc = wt_lac[:, 0]
 q18m_lac_conc = q18m_lac[:, 0]
 q18a_lac_conc = q18a_lac[:, 0]
 
+#theoretical Concentrations
+theory_conc = np.logspace(-5, 2, 100000)
+
 #Fold Changes
 wt_lac_fc = wt_lac[:, 1]
 q18m_lac_fc = q18m_lac[:, 1]
@@ -40,9 +43,9 @@ _ = ax.set_xscale('log')
 wt_lac_plot = ax.plot(wt_lac_conc, wt_lac_fc)
 q18m_lac_plot = ax.plot(q18m_lac_conc, q18m_lac_fc)
 q18a_lac_plot = ax.plot(q18a_lac_conc, q18a_lac_fc)
-wt_theory = ax.plot(wt_lac_conc, fold_change(wt_lac_conc, 141.5))
-wt_theory = ax.plot(wt_lac_conc, fold_change(wt_lac_conc, 141.5))
-wt_theory = ax.plot(wt_lac_conc, fold_change(wt_lac_conc, 141.5))
+wt_theory = ax.plot(theory_conc, fold_change(theory_conc, 141.5))
+q18m_theory = ax.plot(theory_conc, fold_change(theory_conc, 1332))
+q18a_theory = ax.plot(theory_conc, fold_change(theory_conc, 16.56))
 
 _ = ax.legend(labels=('wt', 'q18m', 'q18a'), loc='lower right')
 
