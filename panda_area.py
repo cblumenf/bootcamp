@@ -16,3 +16,6 @@ df = pd.concat((df_low, df_high), axis=1)
 # "Tidy" our data
 df = pd.melt(df, var_name="food density",
              value_name="cross-sectional area (sq micron)").dropna()
+
+#Prints data to file
+df.to_csv('xa_combined.csv', index=False)
