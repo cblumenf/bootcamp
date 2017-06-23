@@ -13,7 +13,6 @@ df_std = gb.apply(np.std)
 
 
 
-
 #Either of the following two work
 df_std_impf = df_std.loc[:, ['impact force (mN)']]
 df_std['impact force (mN)']
