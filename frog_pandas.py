@@ -1,19 +1,15 @@
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 df = pd.read_csv('data/frog_tongue_adhesion.csv', comment='#')
 
-#slice out large impact force measurements
-df_big_force = df.loc[df['impact force (mN)'] > 1000, :]
+# group our data by individual frogs
+imp_force_df = df.loc[:, ['ID', 'impact force (mN)']]
+grouped = imp_force_df.groupby('ID')
 
-fig, ax = plt.subplots(1, 1)
-ax.set_xlabel('impact force (mN)')
-ax.set_ylabel('adhesive force (mN)')
-_ = ax.plot(df['impact force (mN)'], df['adhesive force (mN)'], marker='.',
-            linestyle="none")
+# Find mean of the columns
+df_mean = grouped.apply(np.mean)
 
-df.plot(x='total contact area (mm2)', y='adhesive force (mN)', kind='scatter')
-
-plt.show()
-
-df = df.rename(columns={'impact force (mN)': 'impf'})
+#view the data
+print (df_mean)
